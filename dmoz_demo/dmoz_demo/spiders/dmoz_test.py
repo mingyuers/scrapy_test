@@ -8,10 +8,6 @@ class DmozTestSpider(scrapy.Spider):
     start_urls = ['http://dmoztools.net']
 
     def parse(self, response):
-        title = response.xpath('//title/text()').extract()[0]
-        for url in response.xpath('//a/@href').extract():
-            yield scrapy.Request('http://'+self.allowed_domains[0] + url, callback=self.parse)
-
         if 'title-and-desc' in response.body:
             for res in response.xpath("//div[@class='site-item ']"):
                 item = DmozItem()
@@ -24,7 +20,11 @@ class DmozTestSpider(scrapy.Spider):
                     f.write('title:\t' + item['title'] + '\nlink:\t' + item['link'] + '\ndesc:\t' + item['desc'] + '\n\n')
                 yield item
 
+        for url in response.xpath('//a/@href').extract():
+            yield scrapy.Request('http://' + self.allowed_domains[0] + url, callback=self.parse)
 
+
+        # title = response.xpath('//title/text()').extract()[0]
         # if title == 'DMOZ - World: Chinese Simplified':
         #     for url in response.xpath('//div[@class="cat-item"]/a/@href').extract():
         #         yield scrapy.Request('http://'+self.allowed_domains[0] + url, callback=self.parse)
