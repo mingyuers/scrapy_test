@@ -2,7 +2,7 @@ import scrapy
 from tutorial.items import DmozItem
 
 class DmozSpider(scrapy.Spider):
-    name = 'dmoz'
+    name = 'dmoz_demo'
     allowed_domains = ['dmoztools.net']
     start_urls = [
         'http://dmoztools.net/Society/Philosophy/Aesthetics/'
