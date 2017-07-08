@@ -9,6 +9,7 @@ class Get_ips():
         self.urls = []
         for i in range(page):
             self.urls.append("http://www.xicidaili.com/nn/" + str(i))
+            self.urls.append("http://www.xicidaili.com/nt/" + str(i))
         self.header = {"User-Agent": 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0'}
         # self.file=open("ips",'w')
         self.q = Queue.Queue()
@@ -23,7 +24,7 @@ class Get_ips():
                 ip = ips[i]
                 tds = ip.find_all("td")
                 ip_temp = "http://" + tds[1].contents[0] + ":" + tds[2].contents[0]
-                # print str(ip_temp)
+                print '===',str(ip_temp)
                 self.q.put(str(ip_temp))
 
     def review_ips(self):
@@ -40,7 +41,8 @@ class Get_ips():
                     with open('proxies.txt', 'a') as f:
                         f.write(ip+'\n')
                     self.Lock.release()
-            except Exception:
+            except Exception,e:
+                print e
                 pass
                 # print 'error'
 
@@ -55,6 +57,6 @@ class Get_ips():
             t.join()
         return self.ips
 def get_ip():
-    my=Get_ips(4)
+    my=Get_ips(10)
     return my.main()
 get_ip()
