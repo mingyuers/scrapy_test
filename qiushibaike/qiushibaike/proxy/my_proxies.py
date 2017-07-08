@@ -8,8 +8,8 @@ class Get_ips():
         self.ips = []
         self.urls = []
         for i in range(page):
-            self.urls.append("http://www.xicidaili.com/nn/" + str(i))
-            self.urls.append("http://www.xicidaili.com/nt/" + str(i))
+            self.urls.append("http://www.xicidaili.com/wt/" + str(i))
+#            self.urls.append("http://www.xicidaili.com/nt/" + str(i))
         self.header = {"User-Agent": 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0'}
         # self.file=open("ips",'w')
         self.q = Queue.Queue()
