@@ -10,6 +10,6 @@ import sys
 sys.setrecursionlimit(1000000)
 
 urls = ['https://www.qiushibaike.com/']
-# urls = ['https://www.qiushibaike.com/imgrank/']
+# urls = ['https://www.qiushibaike.com/hot/']
 pt = ParseHtml(urls)
 pt.start()
