@@ -58,6 +58,8 @@ DOWNLOADER_MIDDLEWARES = {
    'qiushibaike.proxy.proxy_mid.ProxyMiddleWare':400,
 }
 
+DOWNLOAD_TIMEOUT = 10 
+
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
 #EXTENSIONS = {

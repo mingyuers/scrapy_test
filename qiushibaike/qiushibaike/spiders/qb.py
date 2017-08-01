@@ -27,6 +27,7 @@ class QiushibaikeComSpider(scrapy.Spider):
             with open('qb.txt','a') as f:
                 line = qi['content'] + '\t' + qi['funny'] + '\t' + qi['comment'] + '\t' + qi['god'] + '\n'
                 f.write(line.encode('utf-8'))
+            
 
             yield qi
 

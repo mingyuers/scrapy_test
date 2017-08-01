@@ -7,15 +7,17 @@ class ProxyMiddleWare(object):
     def process_request(self,request,spider):
         proxy = self.get_random_proxy()
         print("this is request ip:" + proxy)
-        request.meta['proxy'] = proxy
+        # request.meta['proxy'] = str(proxy)
+        request.meta['proxy'] = 'http://122.72.32.72:80'
 
-    def process_response(self,request,response,spider):
-        if response.status != 200:
-            proxy = self.get_random_proxy()
-            print "this is response ip:"+proxy
-            request.meta['proxy'] = proxy
-            return request
-        return response
+    # def process_response(self,request,response,spider):
+    #     if response.status != 200:
+    #         proxy = self.get_random_proxy()
+    #         print "this is response ip:"+proxy
+    #         # request.meta['proxy'] = str(proxy)
+    #         request.meta['proxy'] = 'http://122.72.32.72:80'
+    #         return request
+    #     return response
 
     def get_random_proxy(self):
         while 1:
