@@ -1,6 +1,10 @@
 # coding:utf-8
 import sys,os
-url='https://scontent-hkg3-1.cdninstagram.com/t51.2885-15/e35/20067171_107500479927442_1159351173728174080_n.jpg'
-p = os.getcwd()+'/'+url.split('/')[-1]
-open(p,'wb')
-print sys.path
+from selenium import webdriver
+import requests
+
+url = 'http://hkapp-test.noahwm.com/resources/banner/da6ff6ffd67547ea82e37ea51473d9a3.jpg'
+r = requests.get(url)
+with open('F:/test.jpg','wb') as f:
+    f.write(r.content)
+print r.content
